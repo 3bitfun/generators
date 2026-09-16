@@ -1,0 +1,103 @@
+/* 3bitFun Generators â€” shared retro stylesheet */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --accent: #00ff00; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive, system-ui, sans-serif;
+  background: #000080;
+  background-image: repeating-linear-gradient(45deg, #000080 0 40px, #0000a0 40px 80px);
+  color: #ffff00; line-height: 1.5; min-height: 100vh;
+  text-align: center; padding: 20px 12px 80px; overflow-x: hidden;
+}
+a { color: #ffff00; text-decoration: underline; }
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s step-end infinite; }
+.blink-fast { animation: blink 0.4s step-end infinite; }
+@keyframes rainbow {
+  0% { color: #ff0000; } 16% { color: #ff8800; } 33% { color: #ffff00; }
+  50% { color: #00ff00; } 66% { color: #00ffff; } 83% { color: #0088ff; } 100% { color: #ff00ff; }
+}
+.rainbow { animation: rainbow 2s linear infinite; }
+.marquee {
+  overflow: hidden; white-space: nowrap;
+  background: #ff0000; color: #ffff00; font-weight: 900; padding: 8px 0;
+  border-top: 3px solid #ffff00; border-bottom: 3px solid #ffff00;
+  margin: 16px 0; font-size: 18px; letter-spacing: 1px;
+}
+.marquee span { display: inline-block; padding-left: 100%; animation: scroll-left 18s linear infinite; }
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+.wrap { max-width: 780px; margin: 0 auto; }
+h1 {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(36px, 8vw, 72px); color: #ff0000;
+  text-shadow: 3px 3px 0 #ffff00, 6px 6px 0 #00ff00, 9px 9px 0 #00ffff;
+  letter-spacing: 2px; margin: 20px 0 8px; line-height: 1;
+}
+h1 .small { display: block; font-size: 0.35em; color: #00ff00; text-shadow: 2px 2px 0 #000; letter-spacing: 4px; margin-top: 8px; }
+.subhead { font-size: 20px; color: #00ffff; margin-bottom: 24px; font-weight: 700; }
+.panel { background: #c0c0c0; border: 4px outset #ffffff; color: #000; padding: 20px; margin: 20px 0; text-align: left; font-family: "MS Sans Serif", Tahoma, sans-serif; font-size: 14px; }
+.panel-title {
+  background: linear-gradient(90deg, #000080, #1084d0); color: #fff;
+  font-weight: 700; padding: 4px 8px; margin: -16px -16px 16px; font-size: 13px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.panel-title .buttons { display: flex; gap: 2px; }
+.panel-title .buttons span {
+  display: inline-block; width: 18px; height: 16px; background: #c0c0c0;
+  border: 2px outset #fff; text-align: center; line-height: 12px;
+  font-size: 10px; font-weight: 900; color: #000; cursor: pointer; user-select: none;
+}
+.download-btn {
+  display: inline-block; font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(24px, 5vw, 40px); padding: 24px 48px;
+  background: linear-gradient(180deg, var(--accent) 0%, #007700 100%);
+  color: #ffff00; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+  border: 6px outset var(--accent); cursor: pointer; letter-spacing: 2px;
+  text-decoration: none; transition: transform 0.08s; margin: 20px 0;
+  user-select: none; box-shadow: 0 0 40px var(--accent), 0 0 80px var(--accent);
+  animation: pulse-btn 1s ease-in-out infinite alternate;
+}
+@keyframes pulse-btn { from { box-shadow: 0 0 30px var(--accent); } to { box-shadow: 0 0 60px var(--accent); } }
+.download-btn:hover { transform: scale(1.05); }
+.download-btn:active { transform: scale(0.95); border-style: inset; }
+.download-btn.downloading { animation: shake 0.3s infinite; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+.progress-wrap { background: #000; border: 3px inset #888; height: 28px; margin: 14px auto; max-width: 500px; overflow: hidden; position: relative; }
+.progress-fill { height: 100%; width: 0%; background: repeating-linear-gradient(90deg, var(--accent) 0 12px, #00aa00 12px 24px); transition: width 0.4s ease; box-shadow: 0 0 20px var(--accent) inset; }
+.progress-label { position: absolute; inset: 0; display: grid; place-items: center; color: #ffff00; font-family: "Courier New", monospace; font-weight: 900; font-size: 14px; text-shadow: 1px 1px 0 #000; pointer-events: none; }
+.syslog { background: #000; color: #00ff00; font-family: "Courier New", "Lucida Console", monospace; font-size: 13px; padding: 12px; border: 3px inset #888; height: 180px; overflow-y: auto; text-align: left; line-height: 1.6; }
+.syslog .ok { color: #00ff00; }
+.syslog .warn { color: #ffff00; }
+.syslog .err { color: #ff5555; }
+.syslog .info { color: #55aaff; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-family: "Courier New", monospace; font-size: 13px; color: #000; }
+.info-grid .k { color: #000080; font-weight: 700; }
+.info-grid .v { color: #008000; }
+.features { list-style: none; text-align: left; display: grid; gap: 8px; margin: 12px 0; font-size: 15px; }
+.features li::before { content: "\2714 "; color: #00aa00; font-weight: 900; margin-right: 6px; }
+.features li.bad::before { content: "\2716 "; color: #ff0000; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 20px 0; }
+.badge { background: #c0c0c0; border: 2px outset #fff; padding: 6px 10px; font-family: "MS Sans Serif", Tahoma, sans-serif; font-size: 11px; color: #000; font-weight: 700; letter-spacing: 1px; }
+.counter { font-family: "Courier New", monospace; background: #000; color: #00ff00; padding: 4px 10px; display: inline-block; border: 2px inset #888; margin: 8px 0; font-size: 14px; letter-spacing: 3px; }
+.popup { position: fixed; z-index: 9999; background: #ffffcc; border: 3px outset #ffff00; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); font-family: "MS Sans Serif", Tahoma, sans-serif; font-size: 12px; color: #000; width: 280px; text-align: left; display: none; }
+.popup.show { display: block; animation: popIn 0.3s ease; }
+@keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popup-title { background: linear-gradient(90deg, #ff0000, #ff8800); color: #fff; font-weight: 700; padding: 4px 8px; font-size: 12px; display: flex; justify-content: space-between; }
+.popup-title .x { cursor: pointer; background: #c0c0c0; color: #000; border: 2px outset #fff; width: 18px; height: 16px; text-align: center; line-height: 12px; font-weight: 900; }
+.popup-body { padding: 12px; }
+.popup-body p { margin-bottom: 10px; }
+.popup-body button { font-family: inherit; font-size: 12px; padding: 4px 12px; background: #c0c0c0; border: 2px outset #fff; cursor: pointer; font-weight: 700; }
+.popup-body button:active { border-style: inset; }
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+.hub-card { background: #c0c0c0; border: 4px outset #fff; padding: 16px; text-align: left; font-family: "MS Sans Serif", Tahoma, sans-serif; text-decoration: none; color: #000; transition: transform 0.1s; display: block; }
+.hub-card:hover { transform: translateY(-2px); border-style: inset; }
+.hub-card h3 { font-family: Impact, "Arial Black", sans-serif; color: #000080; font-size: 22px; margin-bottom: 4px; letter-spacing: 1px; }
+.hub-card p { font-size: 13px; color: #333; margin-bottom: 10px; }
+.hub-card .launch { display: inline-block; background: linear-gradient(180deg, var(--accent) 0%, #006600 100%); color: #ffff00; font-weight: 900; padding: 6px 14px; border: 3px outset var(--accent); font-family: Impact, sans-serif; letter-spacing: 1px; font-size: 14px; }
+.hub-card .dl-count { float: right; font-family: "Courier New", monospace; font-size: 11px; color: #008000; margin-top: 6px; }
+.siblings { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 12px 0; }
+.siblings a { background: #c0c0c0; border: 2px outset #fff; padding: 4px 10px; font-family: "MS Sans Serif", Tahoma, sans-serif; font-size: 11px; font-weight: 700; color: #000; text-decoration: none; letter-spacing: 1px; }
+.siblings a:active { border-style: inset; }
+footer { margin-top: 40px; padding: 20px; font-family: "Courier New", monospace; font-size: 11px; color: #00ff00; border-top: 2px dashed #00ff00; }
+footer a { color: #ffff00; }
+@media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } .popup { width: calc(100vw - 40px); } }
